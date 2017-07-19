@@ -1,0 +1,969 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="升职加薪,热门技术," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="本路线共：11门课程
+学习人数：6581人在学
+章节预览：Android-重识ActivityAndroid-深入ActivityAndroid-精通ActivityAndroid必学-BaseAdapter的使用与优化Android-打造万能适配器Android中的Http通信Android必学-AsyncTask基础Android面试常客Handler详解Android攻城狮的第二门课（第3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android加薪利器——断点续传">
+<meta property="og:url" content="http://www.cheshen.wiki/2017/04/15/Android加薪利器——断点续传/index.html">
+<meta property="og:site_name" content="秋名山车神的博客">
+<meta property="og:description" content="本路线共：11门课程
+学习人数：6581人在学
+章节预览：Android-重识ActivityAndroid-深入ActivityAndroid-精通ActivityAndroid必学-BaseAdapter的使用与优化Android-打造万能适配器Android中的Http通信Android必学-AsyncTask基础Android面试常客Handler详解Android攻城狮的第二门课（第3">
+<meta property="og:updated_time" content="2017-04-14T17:29:43.247Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android加薪利器——断点续传">
+<meta name="twitter:description" content="本路线共：11门课程
+学习人数：6581人在学
+章节预览：Android-重识ActivityAndroid-深入ActivityAndroid-精通ActivityAndroid必学-BaseAdapter的使用与优化Android-打造万能适配器Android中的Http通信Android必学-AsyncTask基础Android面试常客Handler详解Android攻城狮的第二门课（第3">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.cheshen.wiki/2017/04/15/Android加薪利器——断点续传/"/>
+
+
+
+
+
+  <title> Android加薪利器——断点续传 | 秋名山车神的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e2dd4b9cfa4273897dc5fa06cc875706";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1261611474&web_id=1261611474" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">秋名山车神的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">车神维基</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-route">
+          <a href="/categories/学习路线/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-line-chart"></i> <br />
+            
+            学习路线
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-blog">
+          <a href="/categories/博客/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-small">
+          <a href="/small" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gamepad"></i> <br />
+            
+            小程序
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.cheshen.wiki/2017/04/15/Android加薪利器——断点续传/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="车神">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/me.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="秋名山车神的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android加薪利器——断点续传
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-15T01:29:43+08:00">
+                2017-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习路线/" itemprop="url" rel="index">
+                    <span itemprop="name">学习路线</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">阅读数：<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本路线共：11门课程</p>
+<p>学习人数：6581人在学</p>
+<p>章节预览：<br>Android-重识Activity<br>Android-深入Activity<br>Android-精通Activity<br>Android必学-BaseAdapter的使用与优化<br>Android-打造万能适配器<br>Android中的Http通信<br>Android必学-AsyncTask基础<br>Android面试常客Handler详解<br>Android攻城狮的第二门课（第3季）<br>Android-Service系列之断点续传下载<br>Android-Service系列之多线程断点续传下载</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="踏上远征之基石"><a href="#踏上远征之基石" class="headerlink" title="踏上远征之基石"></a>踏上远征之基石</h2><h3 id="Android-重识Activity"><a href="#Android-重识Activity" class="headerlink" title="Android-重识Activity"></a><a href="http://www.imooc.com/learn/384" target="_blank" rel="external">Android-重识Activity</a></h3><blockquote>
+<p>Activity作为Android开发实在是太常见了,但是你真的会用Activity吗？本课程为Activity的系列课程的第一讲，将带大家学习Android中最常用的Activity组件的那些事<br>初级·37470人在学</p>
+</blockquote>
+<h3 id="Android-深入Activity"><a href="#Android-深入Activity" class="headerlink" title="Android-深入Activity"></a><a href="http://www.imooc.com/learn/388" target="_blank" rel="external">Android-深入Activity</a></h3><blockquote>
+<p>Activity作为Android开发实在是太常见了,但是你真的会用Activity吗？本课程是Activity系列的第2部分，将继续为大家讲解Activity的相关知识<br>中级·26836人在学</p>
+</blockquote>
+<h3 id="Android-精通Activity"><a href="#Android-精通Activity" class="headerlink" title="Android-精通Activity"></a><a href="http://www.imooc.com/learn/413" target="_blank" rel="external">Android-精通Activity</a></h3><blockquote>
+<p>带领大家学习Android体系中最常见的Acvitiy组件，深入Activity内部，剖析Activity的生命周期分析以及Framew层的相关介绍<br>高级·37538人在学</p>
+</blockquote>
+<h2 id="第一关：装备"><a href="#第一关：装备" class="headerlink" title="第一关：装备"></a>第一关：装备</h2><h3 id="Android必学-BaseAdapter的使用与优化"><a href="#Android必学-BaseAdapter的使用与优化" class="headerlink" title="Android必学-BaseAdapter的使用与优化"></a><a href="http://www.imooc.com/learn/365" target="_blank" rel="external">Android必学-BaseAdapter的使用与优化</a></h3><blockquote>
+<p>本次课程将带领大家了解Android中BaseAdapter的使用，以及我们如何写出高效、文艺的BaseAdapter。<br>初级·37633人在学</p>
+</blockquote>
+<h3 id="Android-打造万能适配器"><a href="#Android-打造万能适配器" class="headerlink" title="Android-打造万能适配器"></a><a href="http://www.imooc.com/learn/372" target="_blank" rel="external">Android-打造万能适配器</a></h3><blockquote>
+<p>本课程通过对传统的ListView的数据绑定的写法，进行一步一步的抽取与封装，首先设计出一个万能的ViewHolder，再抽取一个CommonAdapter复用多数重复的代码，最后为ViewHolder添加操作控件的能力。最终成功的将原本一堆代码浓缩至几行。<br>中级·30842人在学</p>
+</blockquote>
+<h2 id="第二关：技能"><a href="#第二关：技能" class="headerlink" title="第二关：技能"></a>第二关：技能</h2><h3 id="Android中的Http通信"><a href="#Android中的Http通信" class="headerlink" title="Android中的Http通信"></a><a href="http://www.imooc.com/learn/304" target="_blank" rel="external">Android中的Http通信</a></h3><blockquote>
+<p>本次课程将带领大家android当中网络交互处理，例如常见的post、get请求以及相关知识的应用。<br>初级·54119人在学</p>
+</blockquote>
+<h3 id="Android必学-AsyncTask基础"><a href="#Android必学-AsyncTask基础" class="headerlink" title="Android必学-AsyncTask基础"></a><a href="http://www.imooc.com/learn/377" target="_blank" rel="external">Android必学-AsyncTask基础</a></h3><blockquote>
+<p>本次课程将带领大家了解Android中AsyncTask，体会如何在Android中进行异步操作进行各种网络请求，熟练掌握异步线程的使用。<br>初级·35637人在学</p>
+</blockquote>
+<h3 id="Android面试常客Handler详解"><a href="#Android面试常客Handler详解" class="headerlink" title="Android面试常客Handler详解"></a><a href="http://www.imooc.com/learn/267" target="_blank" rel="external">Android面试常客Handler详解</a></h3><blockquote>
+<p>本课程将深入理解Android的Handler机制，并结合源码实例，讲解Looper、MessageqQueue、Handler之间的关系，同时介绍HandlerThread的原理和使用，并分析Handler在开发中遇到的异常的原因，最后从源码的角度分析一下Handler更新UI的流程<br>高级·44265人在学</p>
+</blockquote>
+<h2 id="第三关：坐骑"><a href="#第三关：坐骑" class="headerlink" title="第三关：坐骑"></a>第三关：坐骑</h2><h3 id="Android攻城狮的第二门课（第3季）"><a href="#Android攻城狮的第二门课（第3季）" class="headerlink" title="Android攻城狮的第二门课（第3季）"></a><a href="http://www.imooc.com/learn/179" target="_blank" rel="external">Android攻城狮的第二门课（第3季）</a></h3><blockquote>
+<p>本课程深入的讲解了Android中的手势识别原理、数据存储方式、对组件的详细剖析以及对Service的深度讲解，每一个知识点都对应有实际案例。本课程内容不仅使您牢牢掌握之前的基础知识点，学完之后也会有新的收获、新的体会。<br>初级·62568人在学</p>
+</blockquote>
+<h2 id="放大招，秒BOSS"><a href="#放大招，秒BOSS" class="headerlink" title="放大招，秒BOSS"></a>放大招，秒BOSS</h2><h3 id="Android-Service系列之断点续传下载"><a href="#Android-Service系列之断点续传下载" class="headerlink" title="Android-Service系列之断点续传下载"></a><a href="http://www.imooc.com/learn/363" target="_blank" rel="external">Android-Service系列之断点续传下载</a></h3><blockquote>
+<p>本门课程将带大家从无到有搭建多线程断线续传的实用案例<br>中级·17331人在学</p>
+</blockquote>
+<h3 id="Android-Service系列之多线程断点续传下载"><a href="#Android-Service系列之多线程断点续传下载" class="headerlink" title="Android-Service系列之多线程断点续传下载"></a><a href="http://www.imooc.com/learn/376" target="_blank" rel="external">Android-Service系列之多线程断点续传下载</a></h3><blockquote>
+<p>在日常下载文件的过程，由于网速问题或者突然断电等等使我们正在下载的东西处于暂停状态，当我们在点击它时还能在之前下载的基础上进行下载，这就是今天我们要学习的多线程续传下载程序的开发<br>中级·18543人在学</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>本路径来自<a href="http://www.imooc.com" target="_blank" rel="external">慕课网</a>，由<a href="https://github.com/Zeusw/DreamWork" target="_blank" rel="external">程序员的梦工厂</a>整理及发布。</p>
+<p>官方唯一QQ群：300421872</p>
+<p>未来的你会感谢现在拼命努力的自己。</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>希望大家都学有所成~</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="车神 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay-reward-image.png" alt="车神 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/升职加薪/" rel="tag"># 升职加薪</a>
+          
+            <a href="/tags/热门技术/" rel="tag"># 热门技术</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/15/Android工程师/" rel="next" title="Android工程师">
+                <i class="fa fa-chevron-left"></i> Android工程师
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/15/Android必备技能之基础组件/" rel="prev" title="Android必备技能之基础组件">
+                Android必备技能之基础组件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          <!-- 打赏功能 -->
+          <div id="mypay" style="display: none;">
+            
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>希望大家都学有所成~</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="车神 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay-reward-image.png" alt="车神 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/me.png"
+               alt="车神" />
+          <p class="site-author-name" itemprop="name">车神</p>
+           
+              <p class="site-description motion-element" itemprop="description">我本微末凡尘，却也心向天空。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/">
+                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">108</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Zeusw" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/ChinaMeteor" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/u/0/107459076314752955161" target="_blank" title="Google+">
+                  
+                    <i class="fa fa-fw fa-google-plus"></i>
+                  
+                  Google+
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chinameteor" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://500px.com/meteorshield" target="_blank" title="500px">
+                  
+                    <i class="fa fa-fw fa-500px"></i>
+                  
+                  500px
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.imooc.com" title="慕课网" target="_blank">慕课网</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://bubao.github.io" title="布宝" target="_blank">布宝</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.mixifun.com/bbs/forum.php" title="咪喜社" target="_blank">咪喜社</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#踏上远征之基石"><span class="nav-number">1.</span> <span class="nav-text">踏上远征之基石</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-重识Activity"><span class="nav-number">1.1.</span> <span class="nav-text">Android-重识Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-深入Activity"><span class="nav-number">1.2.</span> <span class="nav-text">Android-深入Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-精通Activity"><span class="nav-number">1.3.</span> <span class="nav-text">Android-精通Activity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一关：装备"><span class="nav-number">2.</span> <span class="nav-text">第一关：装备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Android必学-BaseAdapter的使用与优化"><span class="nav-number">2.1.</span> <span class="nav-text">Android必学-BaseAdapter的使用与优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-打造万能适配器"><span class="nav-number">2.2.</span> <span class="nav-text">Android-打造万能适配器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二关：技能"><span class="nav-number">3.</span> <span class="nav-text">第二关：技能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Android中的Http通信"><span class="nav-number">3.1.</span> <span class="nav-text">Android中的Http通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android必学-AsyncTask基础"><span class="nav-number">3.2.</span> <span class="nav-text">Android必学-AsyncTask基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android面试常客Handler详解"><span class="nav-number">3.3.</span> <span class="nav-text">Android面试常客Handler详解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三关：坐骑"><span class="nav-number">4.</span> <span class="nav-text">第三关：坐骑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Android攻城狮的第二门课（第3季）"><span class="nav-number">4.1.</span> <span class="nav-text">Android攻城狮的第二门课（第3季）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#放大招，秒BOSS"><span class="nav-number">5.</span> <span class="nav-text">放大招，秒BOSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Service系列之断点续传下载"><span class="nav-number">5.1.</span> <span class="nav-text">Android-Service系列之断点续传下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Service系列之多线程断点续传下载"><span class="nav-number">5.2.</span> <span class="nav-text">Android-Service系列之多线程断点续传下载</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">车神</span>
+</div>
+
+
+
+
+<div class="theme-info">
+  我本微末凡尘，却也心向天空。
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数：<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      浏览数：<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<!-- 决定哪些页面有背景动画 -->
+<script type="text/javascript" src="/js/src/init.js"></script>
+<!-- 背景动画 -->
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+
+<!-- 百度自动提交 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,963 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,组件," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="本路线共：9门课程
+学习人数：3164人在学
+章节预览：与AndroidStudio的第一次亲密接触AndroidStudio技巧全集超快的Android模拟器GenymotionAndroid-重识ActivityAndroid-深入ActivityAndroid-精通ActivityAndroid-Service系列之Notification综合应用Android-Service系列之断点续">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android必备技能之基础组件">
+<meta property="og:url" content="http://www.cheshen.wiki/2017/04/15/Android必备技能之基础组件/index.html">
+<meta property="og:site_name" content="秋名山车神的博客">
+<meta property="og:description" content="本路线共：9门课程
+学习人数：3164人在学
+章节预览：与AndroidStudio的第一次亲密接触AndroidStudio技巧全集超快的Android模拟器GenymotionAndroid-重识ActivityAndroid-深入ActivityAndroid-精通ActivityAndroid-Service系列之Notification综合应用Android-Service系列之断点续">
+<meta property="og:updated_time" content="2017-04-15T06:00:57.611Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android必备技能之基础组件">
+<meta name="twitter:description" content="本路线共：9门课程
+学习人数：3164人在学
+章节预览：与AndroidStudio的第一次亲密接触AndroidStudio技巧全集超快的Android模拟器GenymotionAndroid-重识ActivityAndroid-深入ActivityAndroid-精通ActivityAndroid-Service系列之Notification综合应用Android-Service系列之断点续">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.cheshen.wiki/2017/04/15/Android必备技能之基础组件/"/>
+
+
+
+
+
+  <title> Android必备技能之基础组件 | 秋名山车神的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e2dd4b9cfa4273897dc5fa06cc875706";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1261611474&web_id=1261611474" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">秋名山车神的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">车神维基</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-route">
+          <a href="/categories/学习路线/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-line-chart"></i> <br />
+            
+            学习路线
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-blog">
+          <a href="/categories/博客/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-small">
+          <a href="/small" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gamepad"></i> <br />
+            
+            小程序
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.cheshen.wiki/2017/04/15/Android必备技能之基础组件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="车神">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/me.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="秋名山车神的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android必备技能之基础组件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-15T01:29:43+08:00">
+                2017-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习路线/" itemprop="url" rel="index">
+                    <span itemprop="name">学习路线</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">阅读数：<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本路线共：9门课程</p>
+<p>学习人数：3164人在学</p>
+<p>章节预览：<br>与AndroidStudio的第一次亲密接触<br>AndroidStudio技巧全集<br>超快的Android模拟器Genymotion<br>Android-重识Activity<br>Android-深入Activity<br>Android-精通Activity<br>Android-Service系列之Notification综合应用<br>Android-Service系列之断点续传下载<br>Android-Service系列之多线程断点续传下载</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="开发环境搭配模拟器"><a href="#开发环境搭配模拟器" class="headerlink" title="开发环境搭配模拟器"></a>开发环境搭配模拟器</h2><h3 id="与AndroidStudio的第一次亲密接触"><a href="#与AndroidStudio的第一次亲密接触" class="headerlink" title="与AndroidStudio的第一次亲密接触"></a><a href="http://www.imooc.com/learn/206" target="_blank" rel="external">与AndroidStudio的第一次亲密接触</a></h3><blockquote>
+<p>AndroidStudio是Google在I/O大会上发布的一个新的集成开发环境，可以让Android开发变的更简单。本课程会详细的向您介绍AndroidStudio的安装配置、使用技巧以及相对于Eclipse开发的优势，并通过实际的操作让大家快速熟悉AndroidStudio的使用，让您体验更强大的开发工具<br>初级·82319人在学</p>
+</blockquote>
+<h3 id="AndroidStudio技巧全集"><a href="#AndroidStudio技巧全集" class="headerlink" title="AndroidStudio技巧全集"></a><a href="http://www.imooc.com/learn/650" target="_blank" rel="external">AndroidStudio技巧全集</a></h3><blockquote>
+<p>AndroidStudio是一个Android开发环境，基于IntelliJIDEA.类似EclipseADT，AndroidStudio提供了集成的Android开发工具用于开发和调试。随着AndroidStudio的普及，掌握使用技巧刻不容缓！<br>中级·43195人在学</p>
+</blockquote>
+<h3 id="超快的Android模拟器Genymotion"><a href="#超快的Android模拟器Genymotion" class="headerlink" title="超快的Android模拟器Genymotion"></a><a href="http://www.imooc.com/learn/241" target="_blank" rel="external">超快的Android模拟器Genymotion</a></h3><blockquote>
+<p>本课程将介绍Android平台下的一款最快的、最流行的Android模拟器，以及如何安装Genymotion模拟器，并对eclipse和Intellij等开发工具进行配置<br>初级·45876人在学</p>
+</blockquote>
+<h2 id="前台界面Activity五彩缤纷"><a href="#前台界面Activity五彩缤纷" class="headerlink" title="前台界面Activity五彩缤纷"></a>前台界面Activity五彩缤纷</h2><h3 id="Android-重识Activity"><a href="#Android-重识Activity" class="headerlink" title="Android-重识Activity"></a><a href="http://www.imooc.com/learn/384" target="_blank" rel="external">Android-重识Activity</a></h3><blockquote>
+<p>Activity作为Android开发实在是太常见了,但是你真的会用Activity吗？本课程为Activity的系列课程的第一讲，将带大家学习Android中最常用的Activity组件的那些事<br>初级·37470人在学</p>
+</blockquote>
+<h3 id="Android-深入Activity"><a href="#Android-深入Activity" class="headerlink" title="Android-深入Activity"></a><a href="http://www.imooc.com/learn/388" target="_blank" rel="external">Android-深入Activity</a></h3><blockquote>
+<p>Activity作为Android开发实在是太常见了,但是你真的会用Activity吗？本课程是Activity系列的第2部分，将继续为大家讲解Activity的相关知识<br>中级·26836人在学</p>
+</blockquote>
+<h3 id="Android-精通Activity"><a href="#Android-精通Activity" class="headerlink" title="Android-精通Activity"></a><a href="http://www.imooc.com/learn/413" target="_blank" rel="external">Android-精通Activity</a></h3><blockquote>
+<p>带领大家学习Android体系中最常见的Acvitiy组件，深入Activity内部，剖析Activity的生命周期分析以及Framew层的相关介绍<br>高级·37538人在学</p>
+</blockquote>
+<h2 id="后台服务Service兢兢业业"><a href="#后台服务Service兢兢业业" class="headerlink" title="后台服务Service兢兢业业"></a>后台服务Service兢兢业业</h2><h3 id="Android-Service系列之Notification综合应用"><a href="#Android-Service系列之Notification综合应用" class="headerlink" title="Android-Service系列之Notification综合应用"></a><a href="http://www.imooc.com/learn/653" target="_blank" rel="external">Android-Service系列之Notification综合应用</a></h3><blockquote>
+<p>Notification是Android中常用的消息提醒机制，被应用在各式各样的APP上，主要用作消息推送的提醒。本课程将结合Service和Handler来为大家实现Notification的经典应用场景<br>中级·13620人在学</p>
+</blockquote>
+<h3 id="Android-Service系列之断点续传下载"><a href="#Android-Service系列之断点续传下载" class="headerlink" title="Android-Service系列之断点续传下载"></a><a href="http://www.imooc.com/learn/363" target="_blank" rel="external">Android-Service系列之断点续传下载</a></h3><blockquote>
+<p>本门课程将带大家从无到有搭建多线程断线续传的实用案例<br>中级·17331人在学</p>
+</blockquote>
+<h3 id="Android-Service系列之多线程断点续传下载"><a href="#Android-Service系列之多线程断点续传下载" class="headerlink" title="Android-Service系列之多线程断点续传下载"></a><a href="http://www.imooc.com/learn/376" target="_blank" rel="external">Android-Service系列之多线程断点续传下载</a></h3><blockquote>
+<p>在日常下载文件的过程，由于网速问题或者突然断电等等使我们正在下载的东西处于暂停状态，当我们在点击它时还能在之前下载的基础上进行下载，这就是今天我们要学习的多线程续传下载程序的开发<br>中级·18543人在学</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>本路径来自<a href="http://www.imooc.com" target="_blank" rel="external">慕课网</a>，由<a href="https://github.com/Zeusw/DreamWork" target="_blank" rel="external">程序员的梦工厂</a>整理及发布。</p>
+<p>官方唯一QQ群：300421872</p>
+<p>未来的你会感谢现在拼命努力的自己。</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>希望大家都学有所成~</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="车神 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay-reward-image.png" alt="车神 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/组件/" rel="tag"># 组件</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/15/Android加薪利器——断点续传/" rel="next" title="Android加薪利器——断点续传">
+                <i class="fa fa-chevron-left"></i> Android加薪利器——断点续传
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/15/jQuery源码探索之旅/" rel="prev" title="jQuery源码探索之旅">
+                jQuery源码探索之旅 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          <!-- 打赏功能 -->
+          <div id="mypay" style="display: none;">
+            
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>希望大家都学有所成~</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="车神 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay-reward-image.png" alt="车神 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/me.png"
+               alt="车神" />
+          <p class="site-author-name" itemprop="name">车神</p>
+           
+              <p class="site-description motion-element" itemprop="description">我本微末凡尘，却也心向天空。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/">
+                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">108</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Zeusw" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/ChinaMeteor" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/u/0/107459076314752955161" target="_blank" title="Google+">
+                  
+                    <i class="fa fa-fw fa-google-plus"></i>
+                  
+                  Google+
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chinameteor" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://500px.com/meteorshield" target="_blank" title="500px">
+                  
+                    <i class="fa fa-fw fa-500px"></i>
+                  
+                  500px
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.imooc.com" title="慕课网" target="_blank">慕课网</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://bubao.github.io" title="布宝" target="_blank">布宝</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.mixifun.com/bbs/forum.php" title="咪喜社" target="_blank">咪喜社</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发环境搭配模拟器"><span class="nav-number">1.</span> <span class="nav-text">开发环境搭配模拟器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#与AndroidStudio的第一次亲密接触"><span class="nav-number">1.1.</span> <span class="nav-text">与AndroidStudio的第一次亲密接触</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AndroidStudio技巧全集"><span class="nav-number">1.2.</span> <span class="nav-text">AndroidStudio技巧全集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超快的Android模拟器Genymotion"><span class="nav-number">1.3.</span> <span class="nav-text">超快的Android模拟器Genymotion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前台界面Activity五彩缤纷"><span class="nav-number">2.</span> <span class="nav-text">前台界面Activity五彩缤纷</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-重识Activity"><span class="nav-number">2.1.</span> <span class="nav-text">Android-重识Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-深入Activity"><span class="nav-number">2.2.</span> <span class="nav-text">Android-深入Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-精通Activity"><span class="nav-number">2.3.</span> <span class="nav-text">Android-精通Activity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后台服务Service兢兢业业"><span class="nav-number">3.</span> <span class="nav-text">后台服务Service兢兢业业</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Service系列之Notification综合应用"><span class="nav-number">3.1.</span> <span class="nav-text">Android-Service系列之Notification综合应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Service系列之断点续传下载"><span class="nav-number">3.2.</span> <span class="nav-text">Android-Service系列之断点续传下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Service系列之多线程断点续传下载"><span class="nav-number">3.3.</span> <span class="nav-text">Android-Service系列之多线程断点续传下载</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">车神</span>
+</div>
+
+
+
+
+<div class="theme-info">
+  我本微末凡尘，却也心向天空。
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数：<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      浏览数：<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<!-- 决定哪些页面有背景动画 -->
+<script type="text/javascript" src="/js/src/init.js"></script>
+<!-- 背景动画 -->
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+
+<!-- 百度自动提交 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+</body>
+</html>

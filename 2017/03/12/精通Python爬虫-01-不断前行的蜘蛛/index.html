@@ -1,0 +1,959 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python,爬虫," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="声明：
+本系列文章原创于慕课网，作者秋名山车神，任何人不得以任何形式在不经作者允许的情况下，进行任何形式的印刷以及销售，转载需注明出处及此声明。
+本系列文章更新至少每周一更，将涉及Python爬虫基础，Requests，Scrapy等主流爬虫技术。同时会介绍图片验证码，语音验证码的识别以及我自己设计的一个高并发可扩展易维护的集群爬虫架构。
+对文章有任何问题请在下面留言，我会不定期的回复大家。
+人">
+<meta property="og:type" content="article">
+<meta property="og:title" content="精通Python爬虫-01-不断前行的蜘蛛">
+<meta property="og:url" content="http://www.cheshen.wiki/2017/03/12/精通Python爬虫-01-不断前行的蜘蛛/index.html">
+<meta property="og:site_name" content="秋名山车神的博客">
+<meta property="og:description" content="声明：
+本系列文章原创于慕课网，作者秋名山车神，任何人不得以任何形式在不经作者允许的情况下，进行任何形式的印刷以及销售，转载需注明出处及此声明。
+本系列文章更新至少每周一更，将涉及Python爬虫基础，Requests，Scrapy等主流爬虫技术。同时会介绍图片验证码，语音验证码的识别以及我自己设计的一个高并发可扩展易维护的集群爬虫架构。
+对文章有任何问题请在下面留言，我会不定期的回复大家。
+人">
+<meta property="og:image" content="http://www.cheshen.wiki/uploads/01-01.png">
+<meta property="og:image" content="http://www.cheshen.wiki/uploads/01-02.png">
+<meta property="og:updated_time" content="2017-04-15T06:09:40.375Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="精通Python爬虫-01-不断前行的蜘蛛">
+<meta name="twitter:description" content="声明：
+本系列文章原创于慕课网，作者秋名山车神，任何人不得以任何形式在不经作者允许的情况下，进行任何形式的印刷以及销售，转载需注明出处及此声明。
+本系列文章更新至少每周一更，将涉及Python爬虫基础，Requests，Scrapy等主流爬虫技术。同时会介绍图片验证码，语音验证码的识别以及我自己设计的一个高并发可扩展易维护的集群爬虫架构。
+对文章有任何问题请在下面留言，我会不定期的回复大家。
+人">
+<meta name="twitter:image" content="http://www.cheshen.wiki/uploads/01-01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.cheshen.wiki/2017/03/12/精通Python爬虫-01-不断前行的蜘蛛/"/>
+
+
+
+
+
+  <title> 精通Python爬虫-01-不断前行的蜘蛛 | 秋名山车神的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e2dd4b9cfa4273897dc5fa06cc875706";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1261611474&web_id=1261611474" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">秋名山车神的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">车神维基</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-route">
+          <a href="/categories/学习路线/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-line-chart"></i> <br />
+            
+            学习路线
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-blog">
+          <a href="/categories/博客/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-small">
+          <a href="/small" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gamepad"></i> <br />
+            
+            小程序
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.cheshen.wiki/2017/03/12/精通Python爬虫-01-不断前行的蜘蛛/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="车神">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/me.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="秋名山车神的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                精通Python爬虫-01-不断前行的蜘蛛
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-12T18:21:05+08:00">
+                2017-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/博客/" itemprop="url" rel="index">
+                    <span itemprop="name">博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">阅读数：<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>声明：</p>
+<p>本系列文章原创于慕课网，作者秋名山车神，任何人不得以任何形式在不经作者允许的情况下，进行任何形式的印刷以及销售，转载需注明出处及此声明。</p>
+<p>本系列文章更新至少每周一更，将涉及Python爬虫基础，Requests，Scrapy等主流爬虫技术。同时会介绍图片验证码，语音验证码的识别以及我自己设计的一个高并发可扩展易维护的集群爬虫架构。</p>
+<p>对文章有任何问题请在下面留言，我会不定期的回复大家。</p>
+<p>人非圣贤，如果文章有错别字请大家自行区分或指正出来，我将不定期修改错误的地方。</p>
+<p>本系列能否持久更新下去离不开大家的支持与鼓励，以及对原创版权的尊重。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="爬虫的定义"><a href="#爬虫的定义" class="headerlink" title="爬虫的定义"></a>爬虫的定义</h2><p>爬虫就是通过模拟人类使用浏览器来访问网页的过程，通过一个起始URL地址不断的从请求到的HTML中寻找新的URL地址，如此循环下去，直到我们的目的达成。</p>
+<h2 id="什么是URL和HTML"><a href="#什么是URL和HTML" class="headerlink" title="什么是URL和HTML"></a>什么是URL和HTML</h2><h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><p>URL(Uniform Resource Locator)又叫统一资源定位符。通俗的讲，每一个URL都代表一个资源，而这个资源是存储在不同的计算机上，我们使用固定的协议，主机名，端口号，对应的路径以及文件名这样的格式。就可以通过浏览器来访问到存放在某一个主机上面的资源。</p>
+<p>如：<a href="http://www.imooc.com:80/static/img/index/logo-newyear.gif" target="_blank" rel="external">http://www.imooc.com:80/static/img/index/logo-newyear.gif</a> 这就是一个URL地址，它所代表的的含义就是，使用http协议来访问www.imooc.com这个主机，和这个主机的80端口进行通信，找到static目录下的img目录下的index目录下的logo-newyear.gif资源。这个URL就代表了唯一的一个资源，无论是我还是你来访问，请求到的都是这一个资源。所以叫做，统一资源<strong>定位</strong>符。</p>
+<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>HTML(HyperText Markup Language)又叫做超文本标记语言。文本我们都知道，我们最简单的TXT文档，就是一个文本，那么什么是超文本呢？我们可不可以理解为是一种比文本更加强大的东西？因为我们的TXT文档连最基本的针对某个字符进行加粗或者插入一个图片都做不到，所以我们需要一种更加强大的文本，那就是超文本。</p>
+<p>所以HTML不仅仅可以包含文字，还可以包含程序，视频，音频，图片，链接，等等。它具有一种独特的书写格式，简单易学，并且体积较小，容易阅读，可以在互联网进行低带宽传输，并且能够很好的被其他程序解析，比如我们的浏览器。有些人看到前面可能会问：Word文档也可以包含视频音乐和图片啊，为什么Word不叫超文本呢？这个问题非常好，因为Word文档设计本身就不是让它在互联网进行传输的，我们都知道互联网传输什么最重要？那就是速度，Word文档不仅体积大，而且它的编码还不是采用的字符的编码形式，而是采用微软特有的形式进行编码，我们需要依靠特定的软件，比如Office才能编辑这种文档。而不像我们的HTML，他可以使用最原始的文本文档进行编辑，它在传输的时候就是最简单的字符，可以被任何其他程序轻易的读取。</p>
+<p>当我们在使用浏览器访问一个HTML文件的时候，服务器就会把这个文件中包含的字符传输给我们的浏览器，浏览器获取到这个文件以后会把里面包含的视频，图片，样式，音频等等统统请求过来，然后根据里面当初大家规定好的代码标签来将页面漂亮的显示出来，而不是一个原始的代码文本。</p>
+<p>如下图，这是慕课网首页经过浏览器渲染后的样子：</p>
+<p><img src="/uploads/01-01.png" alt="imooc-index-html"></p>
+<p>我们再来看一下没有经过渲染的样子：</p>
+<p><img src="/uploads/01-02.png" alt="imooc-index-code"></p>
+<p>是不是非常的难看，虽然有前端基础的同学能够看出他们代表的意思，但是你能够在脑海中想象出这么漂亮的一个页面吗？恐怕非常困难吧，而我们的浏览器并没有修改任何的东西，只是把当初定义HTML语言时候规定的样式给展现了出来。那么也就是说，这其实是浏览器搞的鬼，实际上服务器返回的还是上面的没有渲染过的代码。</p>
+<p>那么既然浏览器是一个程序，它能够发送请求来获取一个URL地址对应的资源，我们能不能够也写一个类似的程序，但是我们不需要去渲染漂亮的页面，我们只需要从HTML代码中获取一些我们感兴趣的东西就可以了。于是，爬虫技术应运而生。</p>
+<h3 id="不断前行的蜘蛛"><a href="#不断前行的蜘蛛" class="headerlink" title="不断前行的蜘蛛"></a>不断前行的蜘蛛</h3><p>任何事情它一开始出现的目的，一定是为了解决某些问题的，爬虫也不例外。在互联网开始之初，人们建立了许多的网站，我们都知道服务器其实就是一个计算机而已，它也拥有IP地址。我们访问一台服务器的时候，其实访问的就是它的IP地址，但是IP地址并不好记啊，所以人们发明了域名，域名就很好记了。比如说：www.imooc.com，www.baidu.com，www.qq.com。但是随之而来的问题就出现了，这么多的网站，我不可能每个域名都记住啊，你让我记住十几个，甚至是天赋过人，记住几百个，但是其他更多的域名怎么办呢。如果我想找到一个音乐网站，我该怎么找呢。</p>
+<p>这时，就有人想，能不能做一个程序，我让它把世界上所有的网站都找到，然后大家都在自己网站的HTML代码里加入一个特殊的标记，如果你这个网站主要是音乐，你就在里面写上音乐还有其他跟音乐相关的关键词，我的程序就通过分析你们这些页面里包含的东西还有你们的域名存储在我的服务器里，而我来建一个网站。这个网站什么都没有，只有一个搜索框，别人想找一个音乐网站就在框里输入音乐两个字，点搜索我就把你的域名给别人显示出来，这样所有人都只用记住我的网站域名就可以了，其他的根本不用记。</p>
+<p>到这里，可能很多人都明白了，这就是我们的搜索引擎。没错，爬虫的最初目的竟然是为了解决人们记不住互联网上众多的域名而诞生的。但是随着大数据和人工智能时代的到来，数据显得越来越重要，谷歌，百度，腾讯，凭什么他们能够屹立在互联网行业的最巅峰？那就是因为他们掌握的数据量太恐怖了，百度谷歌每天通过人们搜索的关键词就可以判断出全世界的一个趋势，他们知道人们对什么感兴趣。包括腾讯，庞大的用户群体，空间，等等。通过人物之间的关系，以及各种动态就可以分析出某些群体他们感兴趣的产品。</p>
+<p>21世纪什么最重要？产品。我们来看滴滴打车等软件就可以知道，一个好的产品可以让一个普通人身价过亿。那么如何做好一个产品，自然是庞大的数据分析。根据不完全统计，各大招聘网站中数据挖掘工程师的工资不断的飙升，并且稳居IT行业前列。并且在2016年出现了震惊世界的一件事，那就是国际围棋大师，李世石大战谷歌人工智能阿尔法狗，最终败给了阿尔法狗。</p>
+<p>这件事再次让人们重新思考人工智能是否可行，但是无论怎样，人工智能技术绝对离不开庞大的数据量，那么这些数据如何获取，就完全依靠我们的爬虫程序。越来越多的人投身这个行业，越来越多的爬虫进入了这个庞大的互联网，它们目的明确，不断的顺着网络寻找下一个目标，像一个不知疲倦的蜘蛛，永远前行。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>希望大家都学有所成~</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="车神 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay-reward-image.png" alt="车神 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/爬虫/" rel="tag"># 爬虫</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/12/Python多线程之threading.Thread/" rel="next" title="Python多线程之threading.Thread">
+                <i class="fa fa-chevron-left"></i> Python多线程之threading.Thread
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/12/精通Python爬虫-02-初遇/" rel="prev" title="精通Python爬虫-02-初遇">
+                精通Python爬虫-02-初遇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          <!-- 打赏功能 -->
+          <div id="mypay" style="display: none;">
+            
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>希望大家都学有所成~</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="车神 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay-reward-image.png" alt="车神 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/me.png"
+               alt="车神" />
+          <p class="site-author-name" itemprop="name">车神</p>
+           
+              <p class="site-description motion-element" itemprop="description">我本微末凡尘，却也心向天空。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/">
+                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">108</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Zeusw" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/ChinaMeteor" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/u/0/107459076314752955161" target="_blank" title="Google+">
+                  
+                    <i class="fa fa-fw fa-google-plus"></i>
+                  
+                  Google+
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chinameteor" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://500px.com/meteorshield" target="_blank" title="500px">
+                  
+                    <i class="fa fa-fw fa-500px"></i>
+                  
+                  500px
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.imooc.com" title="慕课网" target="_blank">慕课网</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://bubao.github.io" title="布宝" target="_blank">布宝</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.mixifun.com/bbs/forum.php" title="咪喜社" target="_blank">咪喜社</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#爬虫的定义"><span class="nav-number">1.</span> <span class="nav-text">爬虫的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是URL和HTML"><span class="nav-number">2.</span> <span class="nav-text">什么是URL和HTML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#URL"><span class="nav-number">2.1.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML"><span class="nav-number">2.2.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不断前行的蜘蛛"><span class="nav-number">2.3.</span> <span class="nav-text">不断前行的蜘蛛</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">车神</span>
+</div>
+
+
+
+
+<div class="theme-info">
+  我本微末凡尘，却也心向天空。
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数：<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      浏览数：<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<!-- 决定哪些页面有背景动画 -->
+<script type="text/javascript" src="/js/src/init.js"></script>
+<!-- 背景动画 -->
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+
+<!-- 百度自动提交 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+</body>
+</html>

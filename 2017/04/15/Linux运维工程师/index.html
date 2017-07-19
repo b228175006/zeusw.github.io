@@ -1,0 +1,1004 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="求职,Linux,运维," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="本路线共：22门课程
+学习人数：44292人在学
+章节预览：Linux达人养成计划ILinux达人养成计划IILinux网络管理Linux软件安装管理Linux权限管理之基本权限Linux权限管理之特殊权限Linux中的计划任务之CrontabLinux服务管理Linux系统管理shell编程之变量shell编程之运算符shell编程之环境变量配置文件shell编程之正则表达式shell编程之条">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux运维工程师">
+<meta property="og:url" content="http://www.cheshen.wiki/2017/04/15/Linux运维工程师/index.html">
+<meta property="og:site_name" content="秋名山车神的博客">
+<meta property="og:description" content="本路线共：22门课程
+学习人数：44292人在学
+章节预览：Linux达人养成计划ILinux达人养成计划IILinux网络管理Linux软件安装管理Linux权限管理之基本权限Linux权限管理之特殊权限Linux中的计划任务之CrontabLinux服务管理Linux系统管理shell编程之变量shell编程之运算符shell编程之环境变量配置文件shell编程之正则表达式shell编程之条">
+<meta property="og:updated_time" content="2017-04-14T17:29:43.285Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux运维工程师">
+<meta name="twitter:description" content="本路线共：22门课程
+学习人数：44292人在学
+章节预览：Linux达人养成计划ILinux达人养成计划IILinux网络管理Linux软件安装管理Linux权限管理之基本权限Linux权限管理之特殊权限Linux中的计划任务之CrontabLinux服务管理Linux系统管理shell编程之变量shell编程之运算符shell编程之环境变量配置文件shell编程之正则表达式shell编程之条">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.cheshen.wiki/2017/04/15/Linux运维工程师/"/>
+
+
+
+
+
+  <title> Linux运维工程师 | 秋名山车神的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e2dd4b9cfa4273897dc5fa06cc875706";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1261611474&web_id=1261611474" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">秋名山车神的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">车神维基</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-route">
+          <a href="/categories/学习路线/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-line-chart"></i> <br />
+            
+            学习路线
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-blog">
+          <a href="/categories/博客/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-small">
+          <a href="/small" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gamepad"></i> <br />
+            
+            小程序
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.cheshen.wiki/2017/04/15/Linux运维工程师/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="车神">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/me.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="秋名山车神的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux运维工程师
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-15T01:29:43+08:00">
+                2017-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习路线/" itemprop="url" rel="index">
+                    <span itemprop="name">学习路线</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">阅读数：<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本路线共：22门课程</p>
+<p>学习人数：44292人在学</p>
+<p>章节预览：<br>Linux达人养成计划I<br>Linux达人养成计划II<br>Linux网络管理<br>Linux软件安装管理<br>Linux权限管理之基本权限<br>Linux权限管理之特殊权限<br>Linux中的计划任务之Crontab<br>Linux服务管理<br>Linux系统管理<br>shell编程之变量<br>shell编程之运算符<br>shell编程之环境变量配置文件<br>shell编程之正则表达式<br>shell编程之条件判断与流程控制<br>Shell典型应用之主控脚本实现<br>Shell典型应用之系统信息及运行状态获取<br>Shell典型应用之nginx和mysql应用状态分析<br>Shell典型应用之应用日志分析<br>Linux系统扫描技术及安全防范<br>用iptables搭建一套强大的安全防护盾<br>Linux智能DNS服务搭建之Bind服务<br>在UbuntuServer下搭建LAMP环境</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="Linux基础"><a href="#Linux基础" class="headerlink" title="Linux基础"></a>Linux基础</h2><h3 id="Linux达人养成计划I"><a href="#Linux达人养成计划I" class="headerlink" title="Linux达人养成计划I"></a><a href="http://www.imooc.com/learn/175" target="_blank" rel="external">Linux达人养成计划I</a></h3><blockquote>
+<p>本课程以通俗易懂的语言、风趣幽默的实例、清晰严谨的逻辑介绍了Linux的基础内容。课程以CentOS操作系统为例，为你带来Linux的简介、系统安装和常用命令等内容。让您在轻松的氛围中感受到Linux之美。<br>初级·225890人在学</p>
+</blockquote>
+<h3 id="Linux达人养成计划II"><a href="#Linux达人养成计划II" class="headerlink" title="Linux达人养成计划II"></a><a href="http://www.imooc.com/learn/111" target="_blank" rel="external">Linux达人养成计划II</a></h3><blockquote>
+<p>本课程介绍Linux系统下操作VI编辑器、创建文本文件、VI的三种操作模式、磁盘分区与格式化、用户及用户组权限的相关操作与管理等，让童鞋们对Linux系统有进一步的理解，对Linux服务器的维护操作更加得心应手。<br>初级·78875人在学</p>
+</blockquote>
+<h2 id="服务管理"><a href="#服务管理" class="headerlink" title="服务管理"></a>服务管理</h2><h3 id="Linux网络管理"><a href="#Linux网络管理" class="headerlink" title="Linux网络管理"></a><a href="http://www.imooc.com/learn/258" target="_blank" rel="external">Linux网络管理</a></h3><blockquote>
+<p>Linux装好以后是不能和网络中的其他机器进行通信的，本课程会为你解决Linux网络配置的问题。首先会介绍网络基础知识，然后进行IP地址的配置，并总结了在配置网络环境中经常遇到的问题，最后介绍了几种常用远程登录工具的使用，如XShell和SecureCRT。<br>中级·66036人在学</p>
+</blockquote>
+<h3 id="Linux软件安装管理"><a href="#Linux软件安装管理" class="headerlink" title="Linux软件安装管理"></a><a href="http://www.imooc.com/learn/447" target="_blank" rel="external">Linux软件安装管理</a></h3><blockquote>
+<p>软件安装对于操作系统来说是常用的操作，那如何在Linux中使用命令进行软件安装呢？本课程就带你来了解Linux中的软件如何进行安装、卸载、升级等管理。课程内容包括rpm命令管理、yum在线管理、源码包管理和脚本安装包。<br>中级·45680人在学</p>
+</blockquote>
+<h3 id="Linux权限管理之基本权限"><a href="#Linux权限管理之基本权限" class="headerlink" title="Linux权限管理之基本权限"></a><a href="http://www.imooc.com/learn/481" target="_blank" rel="external">Linux权限管理之基本权限</a></h3><blockquote>
+<p>权限管理是Linux中一个十分重要的概念，也是系统安全性的重要保障。本门课程主要介绍Linux的基本权限和默认权限，通过理论讲解与实验演示，小伙们可以了解到权限的相关操作及其重要性。<br>中级·25420人在学</p>
+</blockquote>
+<h3 id="Linux权限管理之特殊权限"><a href="#Linux权限管理之特殊权限" class="headerlink" title="Linux权限管理之特殊权限"></a><a href="http://www.imooc.com/learn/499" target="_blank" rel="external">Linux权限管理之特殊权限</a></h3><blockquote>
+<p>本课程是《Linux权限管理之基本权限》的后续篇，为小伙伴们带来了Linux中常用的一些特殊权限命令，包括ACL权限、sudo权限、文件特殊权限和不可改变位权限。通过@Tony老师的精彩讲解，一定会让你对Linux中的权限有更深刻的认识。<br>中级·21268人在学</p>
+</blockquote>
+<h3 id="Linux中的计划任务之Crontab"><a href="#Linux中的计划任务之Crontab" class="headerlink" title="Linux中的计划任务之Crontab"></a><a href="http://www.imooc.com/learn/216" target="_blank" rel="external">Linux中的计划任务之Crontab</a></h3><blockquote>
+<p>Crontab命令常见于Unix和类Unix的操作系统之中，用于设置周期性被执行的指令。本课程通过对Crontab的介绍以及案例演示，带领大家学习在实际工作中通过crontab进行计划任务设置，让重复的任务自动化执行，提高大家工作效率。<br>高级·24453人在学</p>
+</blockquote>
+<h3 id="Linux服务管理"><a href="#Linux服务管理" class="headerlink" title="Linux服务管理"></a><a href="http://www.imooc.com/learn/537" target="_blank" rel="external">Linux服务管理</a></h3><blockquote>
+<p>本课程主要对Linux的服务管理进行介绍，包括系统的运行级别、服务管理的分类、RPM包管理和源码包服务管理。本门课程对于Linux运维人员来说非常重要。同时，Linux服务的知识点经过Tony老师的梳理，定然会使小伙伴们受益匪浅。<br>中级·28340人在学</p>
+</blockquote>
+<h3 id="Linux系统管理"><a href="#Linux系统管理" class="headerlink" title="Linux系统管理"></a><a href="http://www.imooc.com/learn/583" target="_blank" rel="external">Linux系统管理</a></h3><blockquote>
+<p>本课程为小伙伴们介绍如何对Linux系统进行管理，包括进程管理、工作管理、系统资源查看和定时任务，每个部分讲师都进行了详细的讲解。相信通过本课程的学习，你的Linux技能会有进一步提升。<br>中级·34391人在学</p>
+</blockquote>
+<h2 id="shell实战"><a href="#shell实战" class="headerlink" title="shell实战"></a>shell实战</h2><h3 id="shell编程之变量"><a href="#shell编程之变量" class="headerlink" title="shell编程之变量"></a><a href="http://www.imooc.com/learn/336" target="_blank" rel="external">shell编程之变量</a></h3><blockquote>
+<p>本课程是《Linux达人养成计划I》中第九章课程的延续，主要介绍Linuxshell编程基础中的变量。包括Bash变量的分类和各变量的详细使用，如：用户自定义变量、环境变量、语系变量、位置参数变量和预定义变量。<br>中级·31345人在学</p>
+</blockquote>
+<h3 id="shell编程之运算符"><a href="#shell编程之运算符" class="headerlink" title="shell编程之运算符"></a><a href="http://www.imooc.com/learn/355" target="_blank" rel="external">shell编程之运算符</a></h3><blockquote>
+<p>本课程是《Tony老师聊shell——变量》课程的延续，主要介绍Linuxshell编程基础中的运算符。包括declare命令、数值运算方法和变量测试。首先在declare命令中介绍了数值型和数组类型的声明，然后介绍了运算符的详细使用，最后对不同场景下的变量进行了测试。<br>中级·18973人在学</p>
+</blockquote>
+<h3 id="shell编程之环境变量配置文件"><a href="#shell编程之环境变量配置文件" class="headerlink" title="shell编程之环境变量配置文件"></a><a href="http://www.imooc.com/learn/361" target="_blank" rel="external">shell编程之环境变量配置文件</a></h3><blockquote>
+<p>本课程是《Tony老师聊shell》系列课程的第三篇，为你带来常用的Linux环境变量配置文件的使用。对环境变量配置文件的功能进行了详解，然后又介绍了其他环境变量配置文件，包括注销时生效的环境变量配置文件、历史命令相关的环境变量配置文件、shell登录信息配置文件等。<br>中级·19946人在学</p>
+</blockquote>
+<h3 id="shell编程之正则表达式"><a href="#shell编程之正则表达式" class="headerlink" title="shell编程之正则表达式"></a><a href="http://www.imooc.com/learn/378" target="_blank" rel="external">shell编程之正则表达式</a></h3><blockquote>
+<p>正则表达式在查找中的作用是非常重要的。本课程是《Tony老师聊shell》系列课程的第四篇，为你带来Linuxshell中的正则表达式，字符截取命令cut、printf、awk和sed,字符处理命令sort和wc。<br>中级·23789人在学</p>
+</blockquote>
+<h3 id="shell编程之条件判断与流程控制"><a href="#shell编程之条件判断与流程控制" class="headerlink" title="shell编程之条件判断与流程控制"></a><a href="http://www.imooc.com/learn/408" target="_blank" rel="external">shell编程之条件判断与流程控制</a></h3><blockquote>
+<p>本门课程是《Tony老师聊shell》系列课程的最后一篇，多个典型案例贯穿整个课程。课程内容包括：条件判断式语句、单分支if语句、双分支if语句、多分支if语句、case语句、for循环、while循环和until循环等。学习完本门课程一定会使你的Linux运维能力再次提高。<br>中级·20731人在学</p>
+</blockquote>
+<h3 id="Shell典型应用之主控脚本实现"><a href="#Shell典型应用之主控脚本实现" class="headerlink" title="Shell典型应用之主控脚本实现"></a><a href="http://www.imooc.com/learn/522" target="_blank" rel="external">Shell典型应用之主控脚本实现</a></h3><blockquote>
+<p>《shell典型应用》系列主要使用shell脚本来实现企业中的常见应用，包括主控脚本实现、Linux系统信息及运行状态获取、ngnix和mysql应用状态分析、应用日志分析四个部分。本门课程主要介绍主控脚本实现，以及案例的一些准备工作。<br>高级·24043人在学</p>
+</blockquote>
+<h3 id="Shell典型应用之系统信息及运行状态获取"><a href="#Shell典型应用之系统信息及运行状态获取" class="headerlink" title="Shell典型应用之系统信息及运行状态获取"></a><a href="http://www.imooc.com/learn/538" target="_blank" rel="external">Shell典型应用之系统信息及运行状态获取</a></h3><blockquote>
+<p>本门课程是《shell典型应用》系列的第二门课程，主要分为两个部分，一是介绍如何提取内核版本、系统版本和网络地址等操作系统信息。二是介绍如何分析系统的运行状态，包括CPU负载、内存及磁盘使用率等。<br>高级·15704人在学</p>
+</blockquote>
+<h3 id="Shell典型应用之nginx和mysql应用状态分析"><a href="#Shell典型应用之nginx和mysql应用状态分析" class="headerlink" title="Shell典型应用之nginx和mysql应用状态分析"></a><a href="http://www.imooc.com/learn/539" target="_blank" rel="external">Shell典型应用之nginx和mysql应用状态分析</a></h3><blockquote>
+<p>本课程是《Shell典型应用》系列课程的第三门，主要介绍如何监控nginx和mysql的运行状态。包括对nginx服务器的响应状态和QPS等的并发响应参数进行分析，以及对mysql服务情况和主从响应状态的监控。<br>高级·20106人在学</p>
+</blockquote>
+<h3 id="Shell典型应用之应用日志分析"><a href="#Shell典型应用之应用日志分析" class="headerlink" title="Shell典型应用之应用日志分析"></a><a href="http://www.imooc.com/learn/540" target="_blank" rel="external">Shell典型应用之应用日志分析</a></h3><blockquote>
+<p>本课程是《Shell典型应用》系列课程的最后一门，主要介绍如何应用shell脚本分析系统日志。包括Linux系统日志的分类和HTTP状态码的介绍，接着又通过分析HTTP状态码在不同区间请求条数的案例，来展示如何分析系统日志。<br>高级·19961人在学</p>
+</blockquote>
+<h2 id="服务搭建"><a href="#服务搭建" class="headerlink" title="服务搭建"></a>服务搭建</h2><h3 id="Linux系统扫描技术及安全防范"><a href="#Linux系统扫描技术及安全防范" class="headerlink" title="Linux系统扫描技术及安全防范"></a><a href="http://www.imooc.com/learn/344" target="_blank" rel="external">Linux系统扫描技术及安全防范</a></h3><blockquote>
+<p>安全在互联网的中越来越受到企业和boss们的重视，本课给大家介绍一些网络扫描的技术手段，其中包括主机扫描、路由扫描、批量服务扫描。同时我们也会了解什么是恶意扫描行为，在实际工作中如何合理设置利用基于Linux的内核参数或者利用相关的工具规避一些安全的隐患。<br>中级·21572人在学</p>
+</blockquote>
+<h3 id="用iptables搭建一套强大的安全防护盾"><a href="#用iptables搭建一套强大的安全防护盾" class="headerlink" title="用iptables搭建一套强大的安全防护盾"></a><a href="http://www.imooc.com/learn/389" target="_blank" rel="external">用iptables搭建一套强大的安全防护盾</a></h3><blockquote>
+<p>在”黑与白“的新型互联网时代，不经意间你的站点就可能被一个买地瓜的小朋友标记上了“俺到此地一游！”。安全已经成了互联网、物联网革命时代必须关注并且掌握的一门技术。本课程围绕Linux的iptables为您从简到繁的介绍，如何用iptables守护好您家的前门和后院。<br>高级·21273人在学</p>
+</blockquote>
+<h3 id="Linux智能DNS服务搭建之Bind服务"><a href="#Linux智能DNS服务搭建之Bind服务" class="headerlink" title="Linux智能DNS服务搭建之Bind服务"></a><a href="http://www.imooc.com/learn/634" target="_blank" rel="external">Linux智能DNS服务搭建之Bind服务</a></h3><blockquote>
+<p>《Linux系统下智能DNS服务搭建》系列课程分为三部，分别为Bind服务篇、Bind负载均衡篇和智能DNS篇。本门课程作为系列课程的第一部，首先介绍了DNS的原理和应用，然后自动动手搭建Bind服务，并进行测试，最后还介绍了DNS正向解析工具的使用。<br>高级·8133人在学</p>
+</blockquote>
+<h3 id="在UbuntuServer下搭建LAMP环境"><a href="#在UbuntuServer下搭建LAMP环境" class="headerlink" title="在UbuntuServer下搭建LAMP环境"></a><a href="http://www.imooc.com/learn/170" target="_blank" rel="external">在UbuntuServer下搭建LAMP环境</a></h3><blockquote>
+<p>本课程通过详细的细分教学，让你理解LAMP环境各个组件之间的关系与作用，并能掌握从无到有的在UbuntuServer操作系统下搭建LAMP环境、配置虚拟主机、数据库远程维护等常见的服务器搭建维护技能，为学习PHP铺平道路。<br>中级·32768人在学</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>本路径来自<a href="http://www.imooc.com" target="_blank" rel="external">慕课网</a>，由<a href="https://github.com/Zeusw/DreamWork" target="_blank" rel="external">程序员的梦工厂</a>整理及发布。</p>
+<p>官方唯一QQ群：300421872</p>
+<p>未来的你会感谢现在拼命努力的自己。</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>希望大家都学有所成~</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="车神 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay-reward-image.png" alt="车神 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/求职/" rel="tag"># 求职</a>
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/运维/" rel="tag"># 运维</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/15/Hibernate开发宝典/" rel="next" title="Hibernate开发宝典">
+                <i class="fa fa-chevron-left"></i> Hibernate开发宝典
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/15/高德开发者必由之路——JS API篇/" rel="prev" title="高德开发者必由之路——JSAPI篇">
+                高德开发者必由之路——JSAPI篇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          <!-- 打赏功能 -->
+          <div id="mypay" style="display: none;">
+            
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>希望大家都学有所成~</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="车神 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay-reward-image.png" alt="车神 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/me.png"
+               alt="车神" />
+          <p class="site-author-name" itemprop="name">车神</p>
+           
+              <p class="site-description motion-element" itemprop="description">我本微末凡尘，却也心向天空。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/">
+                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">108</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Zeusw" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/ChinaMeteor" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/u/0/107459076314752955161" target="_blank" title="Google+">
+                  
+                    <i class="fa fa-fw fa-google-plus"></i>
+                  
+                  Google+
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chinameteor" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://500px.com/meteorshield" target="_blank" title="500px">
+                  
+                    <i class="fa fa-fw fa-500px"></i>
+                  
+                  500px
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.imooc.com" title="慕课网" target="_blank">慕课网</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://bubao.github.io" title="布宝" target="_blank">布宝</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.mixifun.com/bbs/forum.php" title="咪喜社" target="_blank">咪喜社</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux基础"><span class="nav-number">1.</span> <span class="nav-text">Linux基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux达人养成计划I"><span class="nav-number">1.1.</span> <span class="nav-text">Linux达人养成计划I</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux达人养成计划II"><span class="nav-number">1.2.</span> <span class="nav-text">Linux达人养成计划II</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务管理"><span class="nav-number">2.</span> <span class="nav-text">服务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux网络管理"><span class="nav-number">2.1.</span> <span class="nav-text">Linux网络管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux软件安装管理"><span class="nav-number">2.2.</span> <span class="nav-text">Linux软件安装管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux权限管理之基本权限"><span class="nav-number">2.3.</span> <span class="nav-text">Linux权限管理之基本权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux权限管理之特殊权限"><span class="nav-number">2.4.</span> <span class="nav-text">Linux权限管理之特殊权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux中的计划任务之Crontab"><span class="nav-number">2.5.</span> <span class="nav-text">Linux中的计划任务之Crontab</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux服务管理"><span class="nav-number">2.6.</span> <span class="nav-text">Linux服务管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux系统管理"><span class="nav-number">2.7.</span> <span class="nav-text">Linux系统管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell实战"><span class="nav-number">3.</span> <span class="nav-text">shell实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shell编程之变量"><span class="nav-number">3.1.</span> <span class="nav-text">shell编程之变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shell编程之运算符"><span class="nav-number">3.2.</span> <span class="nav-text">shell编程之运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shell编程之环境变量配置文件"><span class="nav-number">3.3.</span> <span class="nav-text">shell编程之环境变量配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shell编程之正则表达式"><span class="nav-number">3.4.</span> <span class="nav-text">shell编程之正则表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shell编程之条件判断与流程控制"><span class="nav-number">3.5.</span> <span class="nav-text">shell编程之条件判断与流程控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shell典型应用之主控脚本实现"><span class="nav-number">3.6.</span> <span class="nav-text">Shell典型应用之主控脚本实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shell典型应用之系统信息及运行状态获取"><span class="nav-number">3.7.</span> <span class="nav-text">Shell典型应用之系统信息及运行状态获取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shell典型应用之nginx和mysql应用状态分析"><span class="nav-number">3.8.</span> <span class="nav-text">Shell典型应用之nginx和mysql应用状态分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shell典型应用之应用日志分析"><span class="nav-number">3.9.</span> <span class="nav-text">Shell典型应用之应用日志分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务搭建"><span class="nav-number">4.</span> <span class="nav-text">服务搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux系统扫描技术及安全防范"><span class="nav-number">4.1.</span> <span class="nav-text">Linux系统扫描技术及安全防范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用iptables搭建一套强大的安全防护盾"><span class="nav-number">4.2.</span> <span class="nav-text">用iptables搭建一套强大的安全防护盾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux智能DNS服务搭建之Bind服务"><span class="nav-number">4.3.</span> <span class="nav-text">Linux智能DNS服务搭建之Bind服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在UbuntuServer下搭建LAMP环境"><span class="nav-number">4.4.</span> <span class="nav-text">在UbuntuServer下搭建LAMP环境</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">车神</span>
+</div>
+
+
+
+
+<div class="theme-info">
+  我本微末凡尘，却也心向天空。
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数：<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      浏览数：<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<!-- 决定哪些页面有背景动画 -->
+<script type="text/javascript" src="/js/src/init.js"></script>
+<!-- 背景动画 -->
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+
+<!-- 百度自动提交 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+</body>
+</html>

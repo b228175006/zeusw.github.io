@@ -1,0 +1,975 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="求职必备,前端基础," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="本路线共：13门课程
+学习人数：58621人在学
+章节预览：HTML+CSS基础课程前端开发工具技巧介绍—DW篇JavaScript入门篇JavaScript进阶篇jQuery基础(一)—样式篇jQuery基础(二)—DOM篇jQuery基础(三)—事件篇jQuery基础(四)—动画篇网页定位导航特效网页布局基础信息排列效果Tab选项卡切换效果企业网站综合布局实战">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web前端工程师成长第一阶段(基础篇)">
+<meta property="og:url" content="http://www.cheshen.wiki/2017/04/15/Web前端工程师成长第一阶段(基础篇)/index.html">
+<meta property="og:site_name" content="秋名山车神的博客">
+<meta property="og:description" content="本路线共：13门课程
+学习人数：58621人在学
+章节预览：HTML+CSS基础课程前端开发工具技巧介绍—DW篇JavaScript入门篇JavaScript进阶篇jQuery基础(一)—样式篇jQuery基础(二)—DOM篇jQuery基础(三)—事件篇jQuery基础(四)—动画篇网页定位导航特效网页布局基础信息排列效果Tab选项卡切换效果企业网站综合布局实战">
+<meta property="og:updated_time" content="2017-04-14T17:29:43.312Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Web前端工程师成长第一阶段(基础篇)">
+<meta name="twitter:description" content="本路线共：13门课程
+学习人数：58621人在学
+章节预览：HTML+CSS基础课程前端开发工具技巧介绍—DW篇JavaScript入门篇JavaScript进阶篇jQuery基础(一)—样式篇jQuery基础(二)—DOM篇jQuery基础(三)—事件篇jQuery基础(四)—动画篇网页定位导航特效网页布局基础信息排列效果Tab选项卡切换效果企业网站综合布局实战">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.cheshen.wiki/2017/04/15/Web前端工程师成长第一阶段(基础篇)/"/>
+
+
+
+
+
+  <title> Web前端工程师成长第一阶段(基础篇) | 秋名山车神的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e2dd4b9cfa4273897dc5fa06cc875706";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1261611474&web_id=1261611474" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">秋名山车神的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">车神维基</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-route">
+          <a href="/categories/学习路线/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-line-chart"></i> <br />
+            
+            学习路线
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-blog">
+          <a href="/categories/博客/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-small">
+          <a href="/small" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gamepad"></i> <br />
+            
+            小程序
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.cheshen.wiki/2017/04/15/Web前端工程师成长第一阶段(基础篇)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="车神">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/me.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="秋名山车神的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Web前端工程师成长第一阶段(基础篇)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-15T01:29:43+08:00">
+                2017-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习路线/" itemprop="url" rel="index">
+                    <span itemprop="name">学习路线</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">阅读数：<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本路线共：13门课程</p>
+<p>学习人数：58621人在学</p>
+<p>章节预览：<br>HTML+CSS基础课程<br>前端开发工具技巧介绍—DW篇<br>JavaScript入门篇<br>JavaScript进阶篇<br>jQuery基础(一)—样式篇<br>jQuery基础(二)—DOM篇<br>jQuery基础(三)—事件篇<br>jQuery基础(四)—动画篇<br>网页定位导航特效<br>网页布局基础<br>信息排列效果<br>Tab选项卡切换效果<br>企业网站综合布局实战</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="第一步了解HTML和CSS"><a href="#第一步了解HTML和CSS" class="headerlink" title="第一步了解HTML和CSS"></a>第一步了解HTML和CSS</h2><h3 id="HTML-CSS基础课程"><a href="#HTML-CSS基础课程" class="headerlink" title="HTML+CSS基础课程"></a><a href="http://www.imooc.com/learn/9" target="_blank" rel="external">HTML+CSS基础课程</a></h3><blockquote>
+<p>本课程从最基本的概念开始讲起，步步深入，带领大家学习HTML、CSS样式基础知识，了解各种常用标签的意义以及基本用法，后半部分讲解CSS样式代码添加，为后面的案例课程打下基础。<br>初级·676735人在学</p>
+</blockquote>
+<h3 id="前端开发工具技巧介绍—DW篇"><a href="#前端开发工具技巧介绍—DW篇" class="headerlink" title="前端开发工具技巧介绍—DW篇"></a><a href="http://www.imooc.com/learn/39" target="_blank" rel="external">前端开发工具技巧介绍—DW篇</a></h3><blockquote>
+<p>“工欲善其事，必先利其器”。本课主要以DreamweaverCS6为例，讲授Dreamweaver的使用技巧和重要实用模块，将会覆盖实际开发过程中90%以上的功能，新手入门必备！<br>初级·182191人在学</p>
+</blockquote>
+<h2 id="第二步学习JavaScript"><a href="#第二步学习JavaScript" class="headerlink" title="第二步学习JavaScript"></a>第二步学习JavaScript</h2><h3 id="JavaScript入门篇"><a href="#JavaScript入门篇" class="headerlink" title="JavaScript入门篇"></a><a href="http://www.imooc.com/learn/36" target="_blank" rel="external">JavaScript入门篇</a></h3><blockquote>
+<p>本视频教程让您快速认识JavaScript，熟悉JavaScript基本语法、窗口交互方法和通过DOM进行网页元素的操作，学会如何编写JS代码，如何运用JavaScript去操作HTML元素和CSS样式，本JavaScript教程分为四个章节，能够让您快速入门，为JavaScript深入学习打下基础。<br>初级·444787人在学</p>
+</blockquote>
+<h3 id="JavaScript进阶篇"><a href="#JavaScript进阶篇" class="headerlink" title="JavaScript进阶篇"></a><a href="http://www.imooc.com/learn/10" target="_blank" rel="external">JavaScript进阶篇</a></h3><blockquote>
+<p>做为WEB攻城师必备技术JavaScript，本课程从如何插入JS代码开始，学习JS基础语法、语法、函数、方法等，让你掌握JS编程思路、知识的使用等，实现运用JS语言为网页增加动态效果，达到与用户交互的目的。<br>中级·283624人在学</p>
+</blockquote>
+<h2 id="第三步学习jQuery"><a href="#第三步学习jQuery" class="headerlink" title="第三步学习jQuery"></a>第三步学习jQuery</h2><h3 id="jQuery基础-一-—样式篇"><a href="#jQuery基础-一-—样式篇" class="headerlink" title="jQuery基础(一)—样式篇"></a><a href="http://www.imooc.com/learn/418" target="_blank" rel="external">jQuery基础(一)—样式篇</a></h3><blockquote>
+<p>jQuery基础课程总共分为4个部分，分别是样式篇、事件篇、动画篇、DOM篇。此为第一个部分—样式篇，本课程主要介绍jQuery的基础语法，选择器以及jQuery的一些属性和样式，通过本课程的学习，我们可以用最少的代码做更多的事，让我们一起出发学习吧！<br>初级·108678人在学</p>
+</blockquote>
+<h3 id="jQuery基础-二-—DOM篇"><a href="#jQuery基础-二-—DOM篇" class="headerlink" title="jQuery基础(二)—DOM篇"></a><a href="http://www.imooc.com/learn/530" target="_blank" rel="external">jQuery基础(二)—DOM篇</a></h3><blockquote>
+<p>jQuery基础课程总共分为4个部分，分别是样式篇、事件篇、动画篇、DOM篇。此为第二个部分—DOM篇。本课程主要讲解jQuery中节点的创建、插入、删除与替换，除此之外我们还可以了解到jQuery中丰富的遍历节点的方法。<br>初级·65840人在学</p>
+</blockquote>
+<h3 id="jQuery基础-三-—事件篇"><a href="#jQuery基础-三-—事件篇" class="headerlink" title="jQuery基础(三)—事件篇"></a><a href="http://www.imooc.com/learn/429" target="_blank" rel="external">jQuery基础(三)—事件篇</a></h3><blockquote>
+<p>jQuery基础课程总共分为4个部分，分别是样式篇、事件篇、动画篇、DOM篇。此为第三个部分—事件篇。此部分当中包含了，鼠标事件，表单事件，键盘事件，事件的绑定和解绑以及自定义事件。通过本课程的事件，我们能更快速的对页面进行交互的操作。<br>初级·48560人在学</p>
+</blockquote>
+<h3 id="jQuery基础-四-—动画篇"><a href="#jQuery基础-四-—动画篇" class="headerlink" title="jQuery基础(四)—动画篇"></a><a href="http://www.imooc.com/learn/430" target="_blank" rel="external">jQuery基础(四)—动画篇</a></h3><blockquote>
+<p>jQuery基础课程总共分为4个部分，分别是样式篇、事件篇、动画篇、DOM篇。此为最后一个部分—动画篇。通过本课程的学习，我们可以制作出以下效果：隐藏和显示、上卷下来、淡入淡出。我们也可以通过自定义动画去完成一些我们想要的效果。<br>初级·49275人在学</p>
+</blockquote>
+<h3 id="网页定位导航特效"><a href="#网页定位导航特效" class="headerlink" title="网页定位导航特效"></a><a href="http://www.imooc.com/learn/56" target="_blank" rel="external">网页定位导航特效</a></h3><blockquote>
+<p>本课程我们将为大家介绍从静态布局到动态效果实现，从浅到深，循循渐进，讲解如何定位到所需位置，运用jQuery、JavaScript两种方式实现网页定位导航。赶快行动吧！<br>中级·56170人在学</p>
+</blockquote>
+<h2 id="第四步上手实践"><a href="#第四步上手实践" class="headerlink" title="第四步上手实践"></a>第四步上手实践</h2><h3 id="网页布局基础"><a href="#网页布局基础" class="headerlink" title="网页布局基础"></a><a href="http://www.imooc.com/learn/95" target="_blank" rel="external">网页布局基础</a></h3><blockquote>
+<p>网页布局是进行网页制作的基础。本课程将讲解CSS中三种定位机制——标准文档流、浮动和绝对定位，并对标准文档流、盒子模型、float属性以及position属性等进行详细分析。从晦涩的理论讲解到编辑器环境的逐步验证，让你彻底掌握网页布局的相关知识。<br>初级·189618人在学</p>
+</blockquote>
+<h3 id="信息排列效果"><a href="#信息排列效果" class="headerlink" title="信息排列效果"></a><a href="http://www.imooc.com/learn/62" target="_blank" rel="external">信息排列效果</a></h3><blockquote>
+<p>如何变换网页内容的展现形式，实现从静态网页布局到JS的动态效果？本课程为您讲解运用HTML/CSS实现网页的静态布局，以及运用JS实现网页展现形式之间的切换，节约网页空间。从制作思路分析到效果实现，让你快速学会信息排列效果的制作。<br>中级·26505人在学</p>
+</blockquote>
+<h3 id="Tab选项卡切换效果"><a href="#Tab选项卡切换效果" class="headerlink" title="Tab选项卡切换效果"></a><a href="http://www.imooc.com/learn/176" target="_blank" rel="external">Tab选项卡切换效果</a></h3><blockquote>
+<p>本课程详细介绍网页页面中最流行常用的tab切换效果，包括滑动、点击切换，延迟切换及自动切换等多种效果。其中重点讲解settimeout和setinterval的区别，以及使用JavaScript、jQuery等技术实现tab切换特效。<br>中级·48960人在学</p>
+</blockquote>
+<h3 id="企业网站综合布局实战"><a href="#企业网站综合布局实战" class="headerlink" title="企业网站综合布局实战"></a><a href="http://www.imooc.com/learn/147" target="_blank" rel="external">企业网站综合布局实战</a></h3><blockquote>
+<p>本课程重点介绍HTML/CSS实现常见企业网站布局的方法、布局中常用的基本盒子模型、三列布局、两列自适应高度及基于jQ的开源图片幻灯片切换效果插件的使用。让您快速掌握企业网站的基本布局方法，同时对HTML、CSS、JS、jQ等知识的综合运用和提升。<br>中级·107821人在学</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>本路径来自<a href="http://www.imooc.com" target="_blank" rel="external">慕课网</a>，由<a href="https://github.com/Zeusw/DreamWork" target="_blank" rel="external">程序员的梦工厂</a>整理及发布。</p>
+<p>官方唯一QQ群：300421872</p>
+<p>未来的你会感谢现在拼命努力的自己。</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>希望大家都学有所成~</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="车神 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay-reward-image.png" alt="车神 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/求职必备/" rel="tag"># 求职必备</a>
+          
+            <a href="/tags/前端基础/" rel="tag"># 前端基础</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/15/Android加薪利器--自定义View/" rel="next" title="Android加薪利器--自定义View">
+                <i class="fa fa-chevron-left"></i> Android加薪利器--自定义View
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/15/Web前端工程师/" rel="prev" title="Web前端工程师">
+                Web前端工程师 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          <!-- 打赏功能 -->
+          <div id="mypay" style="display: none;">
+            
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>希望大家都学有所成~</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="车神 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay-reward-image.png" alt="车神 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/me.png"
+               alt="车神" />
+          <p class="site-author-name" itemprop="name">车神</p>
+           
+              <p class="site-description motion-element" itemprop="description">我本微末凡尘，却也心向天空。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/">
+                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">108</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Zeusw" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/ChinaMeteor" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/u/0/107459076314752955161" target="_blank" title="Google+">
+                  
+                    <i class="fa fa-fw fa-google-plus"></i>
+                  
+                  Google+
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/chinameteor" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://500px.com/meteorshield" target="_blank" title="500px">
+                  
+                    <i class="fa fa-fw fa-500px"></i>
+                  
+                  500px
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.imooc.com" title="慕课网" target="_blank">慕课网</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://bubao.github.io" title="布宝" target="_blank">布宝</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.mixifun.com/bbs/forum.php" title="咪喜社" target="_blank">咪喜社</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一步了解HTML和CSS"><span class="nav-number">1.</span> <span class="nav-text">第一步了解HTML和CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML-CSS基础课程"><span class="nav-number">1.1.</span> <span class="nav-text">HTML+CSS基础课程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前端开发工具技巧介绍—DW篇"><span class="nav-number">1.2.</span> <span class="nav-text">前端开发工具技巧介绍—DW篇</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步学习JavaScript"><span class="nav-number">2.</span> <span class="nav-text">第二步学习JavaScript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript入门篇"><span class="nav-number">2.1.</span> <span class="nav-text">JavaScript入门篇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript进阶篇"><span class="nav-number">2.2.</span> <span class="nav-text">JavaScript进阶篇</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三步学习jQuery"><span class="nav-number">3.</span> <span class="nav-text">第三步学习jQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery基础-一-—样式篇"><span class="nav-number">3.1.</span> <span class="nav-text">jQuery基础(一)—样式篇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery基础-二-—DOM篇"><span class="nav-number">3.2.</span> <span class="nav-text">jQuery基础(二)—DOM篇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery基础-三-—事件篇"><span class="nav-number">3.3.</span> <span class="nav-text">jQuery基础(三)—事件篇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery基础-四-—动画篇"><span class="nav-number">3.4.</span> <span class="nav-text">jQuery基础(四)—动画篇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网页定位导航特效"><span class="nav-number">3.5.</span> <span class="nav-text">网页定位导航特效</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四步上手实践"><span class="nav-number">4.</span> <span class="nav-text">第四步上手实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网页布局基础"><span class="nav-number">4.1.</span> <span class="nav-text">网页布局基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信息排列效果"><span class="nav-number">4.2.</span> <span class="nav-text">信息排列效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tab选项卡切换效果"><span class="nav-number">4.3.</span> <span class="nav-text">Tab选项卡切换效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#企业网站综合布局实战"><span class="nav-number">4.4.</span> <span class="nav-text">企业网站综合布局实战</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">车神</span>
+</div>
+
+
+
+
+<div class="theme-info">
+  我本微末凡尘，却也心向天空。
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数：<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      浏览数：<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+<!-- 决定哪些页面有背景动画 -->
+<script type="text/javascript" src="/js/src/init.js"></script>
+<!-- 背景动画 -->
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+
+<!-- 百度自动提交 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+</body>
+</html>
